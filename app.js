@@ -1,8 +1,8 @@
 $(document).ready(function(){
 	$("#item").keyup(function(event){
-		if(event.keycode==13){
+		if(event.keyCode==13){
 			event.preventDefault();
-			$("#sumbit").click();
+			$("#submit").click();
 		};
 	});
 
@@ -10,7 +10,7 @@ $(document).ready(function(){
 $("#submit").click(function(){
 	var txtval=$("#item").val();
 	if(txtval.length>0){
-		$("#second").append('<li class="groceries"><input type="checkbox" id="check"/><span>'+txtval+'</span><button id="remove">Remove</button></li>');
+		$("#second").append('<li class="groceries"><button class="in">&nbsp;&nbsp;&#10004;&nbsp;&nbsp;</button><span class="purchase">'+txtval+'</span><button id="remove">&nbsp;&nbsp;&#10006;&nbsp;&nbsp;</button></li>');
 		$("#item").val('');
 	};
 });
@@ -18,9 +18,12 @@ $("#submit").click(function(){
 $("#second").on("click","#remove", function(){
 	$(this).closest("li").addClass("cancel");
 });
-$("#second").on("click","checkbox",function(){
+
+$("#second").on("click",".in",function(){
 	$(this).closest("li").addClass("in-cart");
+
 });
+
 });
 
 
